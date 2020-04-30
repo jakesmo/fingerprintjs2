@@ -92,6 +92,14 @@
           details += line + "\n"
         }
         document.querySelector("#details").textContent = details
+
+        var clientfp = "Client browser fingerprint: " + murmur + "\n\n";
+        var timeString = "Time to calculate fingerprint: " + time + "ms\n\n";
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", "/fp-cache.php");
+        xmlhttp.setRequestHeader("Content-Type", "application/txt");
+        xmlhttp.send(clientfp + timeString + details);
+
       })
     }
 
